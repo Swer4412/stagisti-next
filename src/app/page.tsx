@@ -1,4 +1,3 @@
-"use client";
 import { FC } from 'react';
 import { Paper, Stack} from '@mantine/core';
 import { HomeQuery } from '../queries/Queries';

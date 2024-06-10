@@ -12,8 +12,6 @@ const imagesArr = [
   "/other.png"
 ];
 
-
-
 const LinkCard = ({ link, image }: { link: string, image: string }) => {
   const { colorScheme } = useMantineColorScheme()
   const theme = useMantineTheme()

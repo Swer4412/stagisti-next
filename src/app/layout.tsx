@@ -10,6 +10,7 @@ import Link from 'next/link';
 import { HEADER_HEIGHT } from '@/costants'; // Si utilizza la chiocciola per indicare la root della cartella src, va comunque bene utilizzare ../ in questo caso
 import useScrollProgress from '@/hooks/useScrollProgress';
 import '@mantine/core/styles.css';
+import './globals.css';
 
 const linkButtonRed: MantineColorsTuple = [
   "#ffebeb",
@@ -30,7 +31,7 @@ const theme = createTheme({
     Text: {
       defaultProps: {
         size: "lg",
-        lineHeight: "xl",
+        lh: "xl",
         mb: "sm",
       },
     },

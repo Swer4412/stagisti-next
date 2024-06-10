@@ -76,8 +76,8 @@ const ListElement: FC<{ list: listInterface[] }> = ({ list }) => {
 };
 
 // Create a custom component for the text element
-const TextElement: FC<{ testo: string }> = ({ testo }) => {
-    return <Markdown className='-my-4'>{testo}</Markdown>; //Mi da problemi quindi gli metto un margine negativo :(
+const TextElement: FC<{ testo: string }> = ({ testo }) => { //TODO Non vanno lh e mb e non so perché
+    return <Text component='span' size="lg" lh="xl" mb="sm"><Markdown className='-my-4'>{testo}</Markdown></Text>; //Mi da problemi quindi gli metto un margine negativo :(
 };
 
 // Use a switch statement to handle different types of elements
@@ -110,7 +110,12 @@ const MacroBlocco = ({ title, counter, body }: MacroBloccoProps) => {
             <Title mb='md' className={isMobile ? undefined : 'text-4xl'} id={title} >
                 {counter ? counter + "° " + title : title}
             </Title>
-            {body.map((element: Body) => renderElement(element))}
+            {body.map((element: Body, index: number) =>
+                <div key={index}>
+                    {renderElement(element)}
+                </div>
+            )}
+
         </Paper>
     );
 };
