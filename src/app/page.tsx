@@ -3,7 +3,7 @@ import { Paper, Stack} from '@mantine/core';
 import { HomeQuery } from '../queries/Queries';
 import MacroBlocco from '../components/MacroBlocco';
 import HomeLinks from '../components/HomeLinks';
-import {query } from '@/lib/client';
+import { query } from '@/lib/client';
 import { gql } from '@apollo/client';
 
 const Home: FC = async () => {

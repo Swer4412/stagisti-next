@@ -1,4 +1,4 @@
-export function Query(path: string) {
+export function GetQuery(path: string) {
   return `query MyQuery {
   all${path}Models {
     title

@@ -48,7 +48,7 @@ const LinkElement: FC<{ fullLink: LinkInterface }> = ({ fullLink }) => {
 
     return (
         //TODO gestire spazi per altezza header --> scroll={(el: any) => scrollWithOffset(el, HEADER_HEIGHT + 20)}
-        <Link href={hashLinkName} >
+        <Link href={hashLinkName}>
             <Button mb='md' className='shadow shadow-red-500/50 hover:shadow-lg  hover:shadow-red-500/50' bg={theme.colors.linkButtonRed[3]}>
                 <Text mb='none' size='md' className='no-underline'>
                     {fullLink.descrizioneLink}
@@ -77,7 +77,7 @@ const ListElement: FC<{ list: listInterface[] }> = ({ list }) => {
 
 // Create a custom component for the text element
 const TextElement: FC<{ testo: string }> = ({ testo }) => { //TODO Non vanno lh e mb e non so perché
-    return <Text component='span' size="lg" lh="xl" mb="sm"><Markdown className='-my-4'>{testo}</Markdown></Text>; //Mi da problemi quindi gli metto un margine negativo :(
+    return <Text component='span'><Markdown className='-my-4'>{testo}</Markdown></Text>; //Mi da problemi quindi gli metto un margine negativo :(
 };
 
 // Use a switch statement to handle different types of elements
