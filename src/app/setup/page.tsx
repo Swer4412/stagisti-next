@@ -4,6 +4,8 @@ import { routesArr } from "@/costants";
 import { GetQuery } from "@/queries/Queries";
 import { query } from '@/lib/client';
 import { gql } from "@apollo/client";
+import { Paper, Title } from "@mantine/core";
+import SkeletonsComponent from "@/components/SkeletonsComponent";
 
 const Pagina = async () => {
 

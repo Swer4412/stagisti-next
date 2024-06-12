@@ -1,3 +1,4 @@
+'use client'
 import { Skeleton } from "@mantine/core";
 import useDeviceDetect from "../hooks/useDeviceDetect";
 
