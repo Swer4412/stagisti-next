@@ -11,6 +11,9 @@ import { HEADER_HEIGHT } from '@/costants'; // Si utilizza la chiocciola per ind
 import useScrollProgress from '@/hooks/useScrollProgress';
 import '@mantine/core/styles.css';
 import './globals.css';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import { NavigationProgress } from '@mantine/nprogress';
 
 const linkButtonRed: MantineColorsTuple = [
   "#ffebeb",
@@ -49,6 +52,9 @@ export default function App({ children }: { children: ReactNode }) {
     </head>
     <body>
       <MantineProvider theme={theme} defaultColorScheme="auto">
+        <Analytics/>
+        <SpeedInsights/>
+        <NavigationProgress/>
         <Layout>
           {children}
         </Layout>
