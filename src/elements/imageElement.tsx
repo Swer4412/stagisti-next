@@ -27,6 +27,7 @@ function ImageElement({ link }: { link: string }) {
   };
 
   return (
+    //E niente le immagini da ora in poi sborderanno perché di si
     <div>
       <Image
         src={link}

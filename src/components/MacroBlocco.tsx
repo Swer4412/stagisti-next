@@ -8,6 +8,7 @@ import LinkElement from '@/elements/linkElement';
 import ListElement from '@/elements/listElement';
 import ImageElement from '@/elements/imageElement';
 import TextElement from '@/elements/textElement';
+import { Fragment } from 'react';
 
 const scrollWithOffset = (el: HTMLElement, offset: number): void => {
     const elementPosition = el.getBoundingClientRect().top + window.scrollY - offset;
@@ -46,9 +47,9 @@ const MacroBlocco = ({ title, counter, body }: MacroBloccoProps) => {
                 {counter ? counter + "° " + title : title}
             </Title>
             {body.map((element: Body, index: number) =>
-                <div key={index}>
+                <Fragment key={index}>
                     {renderElement(element)}
-                </div>
+                </Fragment>
             )}
 
         </Paper>
