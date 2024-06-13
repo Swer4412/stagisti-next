@@ -5,6 +5,7 @@ import { IconArrowBack } from "@tabler/icons-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FC } from "react";
+import { HEADER_HEIGHT } from '@/costants';
 
 // Create a custom component for the link element
 const LinkElement: FC<{ fullLink: LinkInterface }> = ({ fullLink }) => {
@@ -39,7 +40,7 @@ const LinkElement: FC<{ fullLink: LinkInterface }> = ({ fullLink }) => {
     const hashLinkName = "/" + pageName + "#" + fullLink.link.title
 
     return (
-        //TODO gestire spazi per altezza header --> scroll={(el: any) => scrollWithOffset(el, HEADER_HEIGHT + 20)}
+        //TODO gestire spazi per altezza header onClick={(el: any) => scrollWithOffset(el, HEADER_HEIGHT)}
         <Link href={hashLinkName}>
             <Button mb='md' className='shadow shadow-red-500/50 hover:shadow-lg  hover:shadow-red-500/50' bg={theme.colors.linkButtonRed[3]}>
                 <Text mb='none' size='md' className='no-underline'>

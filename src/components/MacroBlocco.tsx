@@ -2,7 +2,6 @@
 import { Paper,Title,} from '@mantine/core';
 import { Body, LinkInterface, MacroBloccoProps,} from '@/_models/commonModels';
 import useDeviceDetect from '@/hooks/useDeviceDetect';
-import { HEADER_HEIGHT } from '@/costants';
 import SubTitleElement from '@/elements/subtitleElement';
 import LinkElement from '@/elements/linkElement';
 import ListElement from '@/elements/listElement';
