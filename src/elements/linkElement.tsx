@@ -9,6 +9,14 @@ import { FC } from "react";
 // Create a custom component for the link element
 const LinkElement: FC<{ fullLink: LinkInterface }> = ({ fullLink }) => {
 
+    const scrollWithOffset = (el: HTMLElement, offset: number): void => {
+        const elementPosition = el.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({
+            top: elementPosition,
+            behavior: 'smooth'
+        });
+    };
+
     const theme = useMantineTheme();
     const router = useRouter()
 

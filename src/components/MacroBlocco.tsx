@@ -8,14 +8,7 @@ import LinkElement from '@/elements/linkElement';
 import ListElement from '@/elements/listElement';
 import ImageElement from '@/elements/imageElement';
 import TextElement from '@/elements/textElement';
-
-const scrollWithOffset = (el: HTMLElement, offset: number): void => {
-    const elementPosition = el.getBoundingClientRect().top + window.scrollY - offset;
-    window.scrollTo({
-        top: elementPosition,
-        behavior: 'smooth'
-    });
-};
+import { Fragment } from 'react';
 
 // Use a switch statement to handle different types of elements
 const renderElement = (element: Body) => {
@@ -42,13 +35,13 @@ const MacroBlocco = ({ title, counter, body }: MacroBloccoProps) => {
     return ( 
         <Paper mb="sm" shadow="xl" p='md' className='flex flex-col'>
             {/* Nel caso sia un telefono, le scritte non devono essere troppo grandi se no "personalizzazione" sborda */}
-            <Title mb='md' className={isMobile ? undefined : 'text-4xl'} id={title} >
+            <Title mb='md' className={isMobile ? undefined : 'text-4xl'} id={title}>
                 {counter ? counter + "° " + title : title}
             </Title>
             {body.map((element: Body, index: number) =>
-                <div key={index}>
+                <Fragment key={index}>
                     {renderElement(element)}
-                </div>
+                </Fragment>
             )}
 
         </Paper>

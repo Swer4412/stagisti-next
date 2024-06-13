@@ -11,6 +11,10 @@ import { HEADER_HEIGHT } from '@/costants'; // Si utilizza la chiocciola per ind
 import useScrollProgress from '@/hooks/useScrollProgress';
 import '@mantine/core/styles.css';
 import './globals.css';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import { NavigationProgress } from '@mantine/nprogress';
+import '@mantine/nprogress/styles.css';
 
 const linkButtonRed: MantineColorsTuple = [
   "#ffebeb",
@@ -32,7 +36,6 @@ const theme = createTheme({
       defaultProps: {
         size: "lg",
         lh: "xl",
-        mb: "sm",
       },
     },
   },
@@ -49,6 +52,9 @@ export default function App({ children }: { children: ReactNode }) {
     </head>
     <body>
       <MantineProvider theme={theme} defaultColorScheme="auto">
+        <Analytics/>
+        <SpeedInsights/>
+        <NavigationProgress/>
         <Layout>
           {children}
         </Layout>
@@ -59,7 +65,6 @@ export default function App({ children }: { children: ReactNode }) {
 }
 
 function Layout({ children }: { children: ReactNode }) {
-  useScrollProgress();
 
   const { colorScheme } = useMantineColorScheme()
   const theme = useMantineTheme()
@@ -73,6 +78,8 @@ function Layout({ children }: { children: ReactNode }) {
   const [opened, { toggle }] = useDisclosure();
   const isSmallDevice = useIsSmallDevice()
   const isMobile = useDeviceDetect()
+
+  useScrollProgress();
 
   return (
     <AppShell
