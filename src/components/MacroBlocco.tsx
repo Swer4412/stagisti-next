@@ -9,6 +9,17 @@ import ListElement from '@/elements/listElement';
 import ImageElement from '@/elements/imageElement';
 import TextElement from '@/elements/textElement';
 import { Fragment } from 'react';
+<<<<<<< HEAD
+=======
+
+const scrollWithOffset = (el: HTMLElement, offset: number): void => {
+    const elementPosition = el.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({
+        top: elementPosition,
+        behavior: 'smooth'
+    });
+};
+>>>>>>> 4e900abf4654dfa50c17ba21660eead40233ab57
 
 // Use a switch statement to handle different types of elements
 const renderElement = (element: Body) => {
