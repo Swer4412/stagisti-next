@@ -1,5 +1,5 @@
 "use client"
-import { Paper, Text, Image, useMantineColorScheme, useMantineTheme } from '@mantine/core';
+import { Paper, Image, useMantineColorScheme, useMantineTheme, Title } from '@mantine/core';
 import Link from 'next/link';
 import { routesArr } from '@/costants';
 
@@ -26,8 +26,8 @@ const LinkCard = ({ link, image }: { link: string, image: string }) => {
     <div className="w-full md:w-1/4 lg:w-1/3 xl:w-1/2 p-4">
       <Paper shadow="md" p="md" className="h-full flex flex-col items-center">
         <Link href={link} className="text-center" style={linkStyle}>
-          <Text fz='xl'>{link.toUpperCase()}</Text>
-          <Image src={image} alt={"Guida " + link} className="w-full h-auto" />
+          <Title order={2} mb='sm' fw='bold'>{link.toUpperCase()}</Title>
+          <Image src={image} radius='md' alt={"Guida " + link} className="w-full h-auto" />
         </Link>
       </Paper>
     </div>

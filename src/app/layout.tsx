@@ -5,7 +5,7 @@ import NavItems from '../components/NavItems';
 import ToggleColorScheme from '../components/ToggleColorScheme';
 import useDeviceDetect from '@/hooks/useDeviceDetect';
 import useIsSmallDevice from '@/hooks/useIsSmallDevice';
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { HEADER_HEIGHT } from '@/costants'; // Si utilizza la chiocciola per indicare la root della cartella src, va comunque bene utilizzare ../ in questo caso
 import useScrollProgress from '@/hooks/useScrollProgress';
@@ -15,6 +15,7 @@ import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { NavigationProgress } from '@mantine/nprogress';
 import '@mantine/nprogress/styles.css';
+import { useRouter } from 'next/router';
 
 const linkButtonRed: MantineColorsTuple = [
   "#ffebeb",
@@ -39,28 +40,32 @@ const theme = createTheme({
       },
     },
   },
+
+  fontFamily: "Helvetica",
+
   colors: {
     linkButtonRed,
   },
+
 });
 
 export default function App({ children }: { children: ReactNode }) {
   return (
-  <html lang="it">
-    <head>
-      <ColorSchemeScript />
-    </head>
-    <body>
-      <MantineProvider theme={theme} defaultColorScheme="auto">
-        <Analytics/>
-        <SpeedInsights/>
-        <NavigationProgress/>
-        <Layout>
-          {children}
-        </Layout>
-      </MantineProvider>
-    </body>
-  </html>
+    <html lang="it">
+      <head>
+        <ColorSchemeScript />
+      </head>
+      <body>
+        <MantineProvider theme={theme} defaultColorScheme="auto">
+          <Analytics />
+          <SpeedInsights />
+          <NavigationProgress />
+          <Layout>
+            {children}
+          </Layout>
+        </MantineProvider>
+      </body>
+    </html>
   )
 }
 
@@ -71,11 +76,10 @@ function Layout({ children }: { children: ReactNode }) {
 
   const linkStyle = {
     color: colorScheme === 'dark' ? theme.colors.gray[0] : theme.colors.blue[6],
-    textDecoration: 'none', // Questo rimuove il sottolineato
-    // Aggiungi qui altri stili se necessario
+    textDecoration: 'none',
   };
 
-  const [opened, { toggle }] = useDisclosure();
+  const [opened, { close, toggle }] = useDisclosure();
   const isSmallDevice = useIsSmallDevice()
   const isMobile = useDeviceDetect()
 
@@ -100,7 +104,7 @@ function Layout({ children }: { children: ReactNode }) {
         </Group>
       </AppShell.Header>
       <AppShell.Navbar p="md" className={`md:bg-opacity-[0.05] md:bg-[#000000] bg-opacity-50 border-none ${isMobile ? 'bg-opacity-100' : ''}`} >
-        <NavItems toggle={toggle} />
+        <NavItems toggle={close} />
       </AppShell.Navbar>
       <AppShell.Main className='bg-opacity-[0.08] bg-[#000000] border-none'>
         <Container p={isSmallDevice ? '0' : undefined}>

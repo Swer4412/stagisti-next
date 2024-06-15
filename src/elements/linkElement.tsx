@@ -24,7 +24,7 @@ const LinkElement: FC<{ fullLink: LinkInterface }> = ({ fullLink }) => {
     // Handle the case when the link is to go back
     if (fullLink.link == null) {
         return (
-            <Button mb='md' className='shadow shadow-red-500/50 hover:shadow-lg  hover:shadow-red-500/50' bg={theme.colors.linkButtonRed[3]}
+            <Button mb='md' className='shadow shadow-red-500/50 hover:shadow-lg  hover:shadow-red-500/50 self-start' bg={theme.colors.linkButtonRed[3]}
                 onClick={() => router.back()} 
             >
                 <Tooltip label="Torna indietro">
@@ -38,6 +38,15 @@ const LinkElement: FC<{ fullLink: LinkInterface }> = ({ fullLink }) => {
     const pageName = fullLink.link._modelApiKey.substring(0, fullLink.link._modelApiKey.indexOf("_"))
 
     const hashLinkName = "/" + pageName + "#" + fullLink.link.title
+    
+    // <Link href={hashLinkName} passHref legacyBehavior>
+    //     <a onClick={(e) => {
+    //         e.preventDefault();
+    //         const target = document.getElementById(fullLink.link.title);
+    //         if (target) {
+    //             scrollWithOffset(target, HEADER_HEIGHT); // Use the HEADER_HEIGHT constant for offset
+    //         }
+    //     }}></a>
 
     return (
         //TODO gestire spazi per altezza header onClick={(el: any) => scrollWithOffset(el, HEADER_HEIGHT)}
