@@ -56,9 +56,9 @@ export default function App({ children }: { children: ReactNode }) {
         <ColorSchemeScript />
       </head>
       <body>
+        <Analytics />
+        <SpeedInsights />
         <MantineProvider theme={theme} defaultColorScheme="auto">
-          <Analytics />
-          <SpeedInsights />
           <NavigationProgress />
           <Layout>
             {children}
