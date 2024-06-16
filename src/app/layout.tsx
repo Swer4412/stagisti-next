@@ -5,7 +5,7 @@ import NavItems from '../components/NavItems';
 import ToggleColorScheme from '../components/ToggleColorScheme';
 import useDeviceDetect from '@/hooks/useDeviceDetect';
 import useIsSmallDevice from '@/hooks/useIsSmallDevice';
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode } from 'react';
 import Link from 'next/link';
 import { HEADER_HEIGHT } from '@/costants'; // Si utilizza la chiocciola per indicare la root della cartella src, va comunque bene utilizzare ../ in questo caso
 import useScrollProgress from '@/hooks/useScrollProgress';
@@ -15,7 +15,6 @@ import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { NavigationProgress } from '@mantine/nprogress';
 import '@mantine/nprogress/styles.css';
-import { useRouter } from 'next/router';
 
 const linkButtonRed: MantineColorsTuple = [
   "#ffebeb",
@@ -53,6 +52,8 @@ export default function App({ children }: { children: ReactNode }) {
   return (
     <html lang="it">
       <head>
+        <link rel="icon" href="/icon.ico" sizes="any" /> {/*Next.js dice di chiamarla favicon.ico ma funziona solo se si chiama icon.ico */}
+        <title>Stagisti</title>
         <ColorSchemeScript />
       </head>
       <body>
@@ -71,6 +72,7 @@ export default function App({ children }: { children: ReactNode }) {
 
 function Layout({ children }: { children: ReactNode }) {
 
+  //Cambio lo stile del link in base al color theme
   const { colorScheme } = useMantineColorScheme()
   const theme = useMantineTheme()
 
@@ -79,10 +81,14 @@ function Layout({ children }: { children: ReactNode }) {
     textDecoration: 'none',
   };
 
+  //Gestisco menu
   const [opened, { close, toggle }] = useDisclosure();
+
+  //Hook per responsiveness
   const isSmallDevice = useIsSmallDevice()
   const isMobile = useDeviceDetect()
 
+  //Hook per muovere il navigation progress
   useScrollProgress();
 
   return (
