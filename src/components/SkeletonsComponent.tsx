@@ -1,9 +1,9 @@
 'use client'
 import { Skeleton } from "@mantine/core";
-import useDeviceDetect from "../hooks/useDeviceDetect";
+import useIsMobile from "../hooks/useIsMobile";
 
 const SkeletonsComponent = () => {
-    const isMobile = useDeviceDetect()
+    const isMobile = useIsMobile()
 
     let width = "70%"
 

@@ -3,7 +3,6 @@ import { AppShell, Burger, ColorSchemeScript, Container, Group, MantineColorsTup
 import { useDisclosure } from '@mantine/hooks';
 import NavItems from '../components/NavItems';
 import ToggleColorScheme from '../components/ToggleColorScheme';
-import useDeviceDetect from '@/hooks/useDeviceDetect';
 import useIsSmallDevice from '@/hooks/useIsSmallDevice';
 import { ReactNode } from 'react';
 import Link from 'next/link';
@@ -57,14 +56,14 @@ export default function App({ children }: { children: ReactNode }) {
         <ColorSchemeScript />
       </head>
       <body>
-        <Analytics />
-        <SpeedInsights />
         <MantineProvider theme={theme} defaultColorScheme="auto">
           <NavigationProgress />
           <Layout>
             {children}
           </Layout>
         </MantineProvider>
+        <Analytics mode={'production'} />
+        <SpeedInsights />
       </body>
     </html>
   )
@@ -86,7 +85,6 @@ function Layout({ children }: { children: ReactNode }) {
 
   //Hook per responsiveness
   const isSmallDevice = useIsSmallDevice()
-  const isMobile = useDeviceDetect()
 
   //Hook per muovere il navigation progress
   useScrollProgress();
@@ -102,14 +100,14 @@ function Layout({ children }: { children: ReactNode }) {
         <Group h="100%" px="md" justify='space-between'>
           <Burger opened={opened} onClick={toggle} hiddenFrom="md" size="sm" />
           <Title>
-            <Link href="/" style={linkStyle}>
+            <Link href="/" style={linkStyle} onClick={toggle}>
               Stagisti
             </Link>
           </Title>
           <ToggleColorScheme />
         </Group>
       </AppShell.Header>
-      <AppShell.Navbar p="md" className={`md:bg-opacity-[0.05] md:bg-[#000000] bg-opacity-50 border-none ${isMobile ? 'bg-opacity-100' : ''}`} >
+      <AppShell.Navbar p="md" className={`min-[992px]:bg-opacity-[0.05] min-[992px]:bg-[#000000] bg-opacity-50 border-none`} >
         <NavItems toggle={close} />
       </AppShell.Navbar>
       <AppShell.Main className='bg-opacity-[0.08] bg-[#000000] border-none'>

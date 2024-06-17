@@ -1,7 +1,7 @@
 "use client";
 import { Paper,Title,} from '@mantine/core';
 import { Body, LinkInterface, MacroBloccoProps,} from '@/_models/commonModels';
-import useDeviceDetect from '@/hooks/useDeviceDetect';
+import useIsMobile from '@/hooks/useIsMobile';
 import SubTitleElement from '@/elements/subtitleElement';
 import LinkElement from '@/elements/linkElement';
 import ListElement from '@/elements/listElement';
@@ -30,7 +30,7 @@ const renderElement = (element: Body) => {
 
 
 const MacroBlocco = ({ title, counter, body }: MacroBloccoProps) => {
-    const isMobile = useDeviceDetect()
+    const isMobile = useIsMobile()
     return ( 
         <Paper mb="sm" shadow="xl" p='md' className='flex flex-col'>
             {/* Nel caso sia un telefono, le scritte non devono essere troppo grandi se no "personalizzazione" sborda */}
